@@ -16,7 +16,7 @@ const Main = ({ navigation }) => {
           </View>
 
           <View style={[styles.buttonContainer, { marginTop:10 }]}>
-            <TouchableOpacity style={styles.innerButtonContainer} onPress={()=> navigation.navigate('CategoryScreen')}>
+            <TouchableOpacity style={styles.innerButtonContainer} onPress={()=> navigation.navigate('HowToPlayScreen')}>
               <Text style={styles.buttonContainerText}>How to Play</Text>
             </TouchableOpacity>
           </View>

@@ -4,7 +4,6 @@ import { firebase } from '../config'
 
 const Fetch = ( questionNumber ) => {
     const round = questionNumber.questionNumber
-
     const [users, setUsers] = useState([])
     const todoRef = firebase.firestore().collection('questions')
 
