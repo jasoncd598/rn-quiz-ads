@@ -50,15 +50,18 @@ const Category = ({ navigation }) => {
                 <Appbar.BackAction onPress={() => { navigation.goBack() }} color="#D6B702" />
             </Appbar.Header>
 
+            <View style={{ margin: 25, marginTop:0 }}>
+                <Text style={{ color:'#2E2E2E', fontSize:35, fontWeight:'800', marginBottom:5 }} >Category</Text>
+                <Text style={{ color:'#747474', fontSize:18 }} >Choose your favorite category and test your ability by solving</Text>
+            </View>
+
             <FlatList
                 data={categories}
                 numColumns={1}
                 renderItem={({ item }) => (
-                <TouchableOpacity style={{ flex:1, margin:25 }}>
-                    <View style={{ backgroundColor:'red'}}>
-                        <Text>{ item.title }</Text>
-                        <Text>{ item.description }</Text>
-                    </View>
+                <TouchableOpacity style={styles.categoryContainer}>
+                    <Text style={styles.categoryTitle}>{ item.title }</Text>
+                    <Text style={styles.categoryDescription}>{ item.description }</Text>
                 </TouchableOpacity>
             )}/>
 
@@ -78,5 +81,25 @@ const styles = StyleSheet.create({
       flex:1,
       justifyContent: 'center',
       alignItems:'center'
+    },
+    categoryContainer:{ 
+        flex:1, 
+        margin:25, 
+        marginTop:0,
+        height:110, 
+        backgroundColor:'#D6B702', 
+        borderRadius:10, 
+        justifyContent:'center', 
+        alignItems:'center'  
+    },
+    categoryTitle: {
+        fontSize:25, 
+        fontWeight:'800', 
+        marginBottom:5,
+        color:'#ffff'
+    },
+    categoryDescription: {
+        color:'#ffff', 
+        fontSize:15 
     }
 })
