@@ -7,15 +7,16 @@ const Category = ({ navigation }) => {
     <View style={styles.container}>
         <Appbar.Header style={{ backgroundColor:'#FF8B13'}}>
             <Appbar.BackAction onPress={() => { navigation.goBack() }} color='#fff'/>
+            <View style={{ alignItems:'center', justifyContent:'flex-end', flexDirection:'row', width:'80%' }}>
+                <View style={{ flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
+                    <Image style={{ width:30, height:30 }} source={{ uri: 'https://cdn-icons-png.flaticon.com/512/3989/3989686.png'}}/>
+                    <Text style={{ color:'#fff', marginLeft:8, fontSize:20, fontWeight:'800'}}>100</Text>
+                </View>
+            </View>
         </Appbar.Header>
 
         <View style={styles.subContainer}>
-            <View style={{ margin:25, marginTop:0, alignItems:'flex-end', justifyContent:'space-between', flexDirection:'row' }}>
-                <View style={{ flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
-                    <Image style={{ width:30, height:30 }} source={{ uri: 'https://cdn-icons-png.flaticon.com/512/3989/3989686.png'}}/>
-                    <Text style={{ color:'#fff', marginLeft:8, fontSize:20}}>100</Text>
-                </View>
-            </View>
+          
           
             <View style={{ margin:25, marginTop:0 }}>
                 <Text style={{ color:'#fff', fontSize:35, fontWeight:'800', marginBottom:5 }}>Category</Text>
