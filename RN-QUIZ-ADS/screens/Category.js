@@ -16,8 +16,6 @@ const Category = ({ navigation }) => {
         </Appbar.Header>
 
         <View style={styles.subContainer}>
-          
-          
             <View style={{ margin:25, marginTop:0 }}>
                 <Text style={{ color:'#fff', fontSize:35, fontWeight:'800', marginBottom:5 }}>Category</Text>
                 <Text style={{ color:'#fff', fontSize:18 }} >Have a try with your favorite category and answer all the questions. Let's start learning!</Text>
@@ -29,7 +27,9 @@ const Category = ({ navigation }) => {
                 <View style={styles.categoryContainer}>
                     <View style={{ flexDirection:'row', justifyContent:'space-between' }}>
                         <View>
-                            <TouchableOpacity style={{ margin:15, width:24 }}>
+                            <TouchableOpacity 
+                                onPress={() => navigation.push('Math_Level1Screen')}
+                                style={{ margin:15, width:24 }}>
                                 <Ionicons name="md-play" size={24} color="#F273E6"/>
                             </TouchableOpacity>
                             <View  style={{ margin:15, marginTop:0 }}>

@@ -7,7 +7,6 @@ const Fetch = ( questionNumber ) => {
     const [users, setUsers] = useState([])
     const todoRef = firebase.firestore().collection('questions')
 
-
     useEffect(() => {
         async function init(){
             todoRef.onSnapshot(querySnapShot => {
@@ -36,12 +35,12 @@ const Fetch = ( questionNumber ) => {
                 data={users}
                 numColumns={1}
                 renderItem={({ item }) => (
-                    <TouchableOpacity style={style.container}>
-                        <View style={style.innerContainer}>
-                            <Text style={style.questions}>{ item.question }</Text>
-                            <Text style={style.choices}>A. { item.choiceA }</Text>
-                            <Text style={style.choices}>B. { item.choiceB }</Text>
-                            <Text style={style.choices}>C. { item.choiceC }</Text>
+                    <TouchableOpacity>
+                        <View>
+                            <Text>{ item.question }</Text>
+                            <Text>A. { item.choiceA }</Text>
+                            <Text>B. { item.choiceB }</Text>
+                            <Text>C. { item.choiceC }</Text>
                         </View>
                     </TouchableOpacity>
                 )}
@@ -51,7 +50,3 @@ const Fetch = ( questionNumber ) => {
 }
 
 export default Fetch
-
-const style = StyleSheet.create({
-
-})
