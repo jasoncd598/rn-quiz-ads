@@ -1,8 +1,27 @@
+import React, { useEffect } from 'react'
+
 import { StyleSheet, Text, TouchableOpacity, View, Image, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Appbar } from 'react-native-paper';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Category = ({ navigation }) => {
+
+    useEffect(() => {
+        async function init(){
+            try {
+                const userLevel = await AsyncStorage.getItem('@userLevel')
+                if(userLevel !== null) {
+                    console.log(userLevel)
+                }
+            } 
+            catch(e) {
+                console.log(`Error ${e}`)
+            }
+        }
+        init()
+    })
+
   return (
     <View style={styles.container}>
         <Appbar.Header style={{ backgroundColor:'#FF8B13'}}>
