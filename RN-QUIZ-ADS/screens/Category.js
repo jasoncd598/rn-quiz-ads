@@ -1,26 +1,51 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
-import { StyleSheet, Text, TouchableOpacity, View, Image, ScrollView } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Image, ScrollView, BackHandler } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Appbar } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Category = ({ navigation }) => {
+    const [currentLevelMath, setCurrentLevelMath] = useState('')
+    const [currentLevelScience, setCurrentLevelScience] = useState('')
+    const [currentLevelTechnology, setCurrentLevelTechnology] = useState('')
+    const [currentLevelHistory, setCurrentLevelHistory] = useState('')
 
     useEffect(() => {
-        async function init(){
-            try {
-                const userLevel = await AsyncStorage.getItem('@userLevel')
-                if(userLevel !== null) {
-                    console.log(userLevel)
-                }
-            } 
-            catch(e) {
-                console.log(`Error ${e}`)
+        const unsubscribe = navigation.addListener('focus', async () => {
+            const userLevelMath = await AsyncStorage.getItem('@userLevelMath')
+            const userLevelScience = await AsyncStorage.getItem('@userLevelScience')
+            const userLevelTechnology = await AsyncStorage.getItem('@userLevelTechnology')
+            const userLevelHistory = await AsyncStorage.getItem('@userLevelHistory')
+
+            if(userLevelMath !== null || userLevelScience !== null || userLevelTechnology !== null || userLevelHistory !== null) {
+                setCurrentLevelMath(userLevelMath)
+                setCurrentLevelScience(userLevelScience)
+                setCurrentLevelTechnology()
+                setCurrentLevelHistory()
+
+            }else{
+                setCurrentLevelMath('1')
+                setCurrentLevelScience('1')
+                setCurrentLevelTechnology('1')
+                setCurrentLevelHistory('1')
             }
+            
+        });
+
+        const backHandler = BackHandler.addEventListener(
+            'hardwareBackPress',
+            () => {
+                navigation.navigate('MainScreen')
+                return true;
+            },
+        );
+
+        return () => {
+            unsubscribe
+            backHandler.remove();
         }
-        init()
-    })
+    },[navigation])
 
   return (
     <View style={styles.container}>
@@ -47,13 +72,13 @@ const Category = ({ navigation }) => {
                     <View style={{ flexDirection:'row', justifyContent:'space-between' }}>
                         <View>
                             <TouchableOpacity 
-                                onPress={() => navigation.push('Math_Level1Screen')}
+                                onPress={() => navigation.push(`Math_Level${currentLevelMath}Screen`)}
                                 style={{ margin:15, width:24 }}>
                                 <Ionicons name="md-play" size={24} color="#F273E6"/>
                             </TouchableOpacity>
                             <View  style={{ margin:15, marginTop:0 }}>
-                                <Text style={{ color:'#747474', fontSize:12 }} >Level 1</Text>
-                                <Text style={{ color:'#FF8B13', fontSize:25 }} >Mathematics</Text>
+                                <Text style={{ color:'#747474', fontSize:12 }}>Level {currentLevelMath}</Text>
+                                <Text style={{ color:'#FF8B13', fontSize:25 }}>Mathematics</Text>
                             </View>
                         </View>
                         <View style={{ margin:15, marginTop:0, justifyContent:'center', alignItems:'center' }}>
@@ -65,12 +90,14 @@ const Category = ({ navigation }) => {
                 <View style={styles.categoryContainer}>
                     <View style={{ flexDirection:'row', justifyContent:'space-between' }}>
                         <View>
-                            <TouchableOpacity style={{ margin:15, width:24 }}>
+                            <TouchableOpacity 
+                                onPress={() => navigation.push(`Science_Level${currentLevelScience}Screen`)}
+                                style={{ margin:15, width:24 }}>
                                 <Ionicons name="md-lock-closed" size={24} color="#F273E6" />
                             </TouchableOpacity>
                             <View  style={{ margin:15, marginTop:0 }}>
-                                <Text style={{ color:'#747474', fontSize:12 }} >Level 1</Text>
-                                <Text style={{ color:'#FF8B13', fontSize:25 }} >Science</Text>
+                                <Text style={{ color:'#747474', fontSize:12 }}>Level {currentLevelScience}</Text>
+                                <Text style={{ color:'#FF8B13', fontSize:25 }}>Science</Text>
                             </View>
                         </View>
                         <View style={{ margin:15, marginTop:0, justifyContent:'center', alignItems:'center' }}>
@@ -82,11 +109,13 @@ const Category = ({ navigation }) => {
                 <View style={styles.categoryContainer}>
                     <View style={{ flexDirection:'row', justifyContent:'space-between' }}>
                         <View>
-                            <TouchableOpacity style={{ margin:15, width:24 }}>
+                            <TouchableOpacity 
+                                onPress={() => navigation.push(`Technology_Level${currentLevelTechnology}Screen`)}
+                                style={{ margin:15, width:24 }}>
                                 <Ionicons name="md-lock-closed" size={24} color="#F273E6" />
                             </TouchableOpacity>
                             <View  style={{ margin:15, marginTop:0 }}>
-                                <Text style={{ color:'#747474', fontSize:12 }} >Level 1</Text>
+                                <Text style={{ color:'#747474', fontSize:12 }}>Level {currentLevelTechnology}S</Text>
                                 <Text style={{ color:'#FF8B13', fontSize:25 }}>Technology</Text>
                             </View>
                         </View>
@@ -99,11 +128,13 @@ const Category = ({ navigation }) => {
                 <View style={styles.categoryContainer}>
                     <View style={{ flexDirection:'row', justifyContent:'space-between' }}>
                         <View>
-                            <TouchableOpacity style={{ margin:15, width:24 }}>
+                            <TouchableOpacity 
+                                onPress={() => navigation.push(`History_Level${currentLevelHistory}Screen`)}
+                                style={{ margin:15, width:24 }}>
                                 <Ionicons name="md-lock-closed" size={24} color="#F273E6" />
                             </TouchableOpacity>
                             <View  style={{ margin:15, marginTop:0 }}>
-                                <Text style={{ color:'#747474', fontSize:12 }} >Level 1</Text>
+                                <Text style={{ color:'#747474', fontSize:12 }}>Level {currentLevelHistory}</Text>
                                 <Text style={{ color:'#FF8B13', fontSize:25 }}>History</Text>
                             </View>
                         </View>

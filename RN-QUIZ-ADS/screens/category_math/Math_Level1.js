@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, Text, TouchableOpacity, View, Image, ScrollView } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Image, BackHandler } from 'react-native';
 import { Appbar, Modal } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -22,11 +22,20 @@ const Math_Level1 = ({ navigation }) => {
     
     useEffect(() => {
         async function init(){
-             try {
-                 await AsyncStorage.setItem('@userLevel', 2)
-             } catch (e) {
-                 console.log(`Error ${e}`)
-             }
+            try {
+                await AsyncStorage.setItem('@userLevelMath', '1')
+            } catch (e) {
+                console.log(`Error ${e}`)
+            }
+
+            const backHandler = BackHandler.addEventListener(
+            'hardwareBackPress',
+                () => {
+                    navigation.navigate('CategoryScreen')
+                    return true;
+                },
+            );
+            return () => backHandler.remove();
         }
         init()
     },[])
@@ -35,7 +44,7 @@ const Math_Level1 = ({ navigation }) => {
     <View style={styles.container}>
         <Appbar.Header style={{ backgroundColor:'#FF8B13'}}>
             <Appbar.BackAction onPress={() => { navigation.navigate('CategoryScreen') }} color='#fff'/>
-            <Appbar.Content title="Level 1" subtitle={'Subtitle'} color='#fff'/>
+            <Appbar.Content title="Math - Level 1" subtitle={'Subtitle'} color='#fff'/>
         </Appbar.Header>
 
         <View style={styles.subContainer}>

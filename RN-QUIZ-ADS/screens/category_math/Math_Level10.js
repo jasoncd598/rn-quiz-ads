@@ -3,7 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View, Image, BackHandler } from 're
 import { Appbar, Modal } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Math_Level2 = ({ navigation }) => {
+const Math_Level10 = ({ navigation }) => {
     const [visible, setVisible] = useState(false);
     const [correct, setCorrect] = useState(true);
     const [wrong, setWrong] = useState(true);
@@ -23,11 +23,11 @@ const Math_Level2 = ({ navigation }) => {
     useEffect(() => {
        async function init(){
             try {
-                await AsyncStorage.setItem('@userLevelMath', '2')
+                await AsyncStorage.setItem('@userLevelMath', '10')
             } catch (e) {
                 console.log(`Error ${e}`)
             }
-            
+
             const backHandler = BackHandler.addEventListener(
             'hardwareBackPress',
                 () => {
@@ -44,7 +44,7 @@ const Math_Level2 = ({ navigation }) => {
     <View style={styles.container}>
         <Appbar.Header style={{ backgroundColor:'#FF8B13'}}>
             <Appbar.BackAction onPress={() => { navigation.navigate('CategoryScreen') }} color='#fff'/>
-            <Appbar.Content title="Math - Level 2" subtitle={'Subtitle'} color='#fff'/>
+            <Appbar.Content title="Math - Level 10" subtitle={'Subtitle'} color='#fff'/>
         </Appbar.Header>
 
         <View style={styles.subContainer}>
@@ -70,7 +70,7 @@ const Math_Level2 = ({ navigation }) => {
         {
             visible == true && correct == true? 
             <View style={styles.modalChecker}>
-                <TouchableOpacity style={styles.modalChecker} onPress={() => { navigation.push('Math_Level3Screen') }}>
+                <TouchableOpacity style={styles.modalChecker} onPress={() => { navigation.push('Math_Level11Screen') }}>
                     <View>
                         <Image style={{ width:150, height:150 }} source={{ uri:'https://cdn-icons-png.flaticon.com/512/2954/2954885.png' }} />
                     </View>
@@ -88,7 +88,7 @@ const Math_Level2 = ({ navigation }) => {
         {
             visible == true && wrong == true? 
             <View style={styles.modalChecker}>
-                <TouchableOpacity style={styles.modalChecker} onPress={() => { navigation.push('Math_Level3Screen') }}>
+                <TouchableOpacity style={styles.modalChecker} onPress={() => { navigation.push('Math_Level11Screen') }}>
                     <View>
                         <Image style={{ width:150, height:150 }} source={{ uri:'https://cdn-icons-png.flaticon.com/512/2190/2190577.png' }} />
                     </View>
@@ -108,7 +108,7 @@ const Math_Level2 = ({ navigation }) => {
     )
 }
 
-export default Math_Level2
+export default Math_Level10
 
 const styles = StyleSheet.create({
     container: {
