@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View, Image, BackHandler } from 'react-native';
 import { Appbar, Modal } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
 
+const adUnitId = __DEV__ ? TestIds.BANNER : 'ca-app-pub-7588961490853489/3026128751';
 const Technology_Level22 = ({ navigation }) => {
     const [visible, setVisible] = useState(false);
     const [correct, setCorrect] = useState(true);
@@ -42,27 +44,27 @@ const Technology_Level22 = ({ navigation }) => {
 
     return (
     <View style={styles.container}>
-        <Appbar.Header style={{ backgroundColor:'#FF8B13'}}>
+        <Appbar.Header style={{ backgroundColor:'#363A66'}}>
             <Appbar.BackAction onPress={() => { navigation.navigate('CategoryScreen') }} color='#fff'/>
             <Appbar.Content title="Technology - Level 22" subtitle={'Subtitle'} color='#fff'/>
         </Appbar.Header>
 
         <View style={styles.subContainer}>
             <View style={{ margin: 25, alignItems:'center', justifyContent:'center'}}>
-                <Text style={{ fontSize:18, fontWeight:'900', color:'#2E2E2E'}}>What is the equation of the circle with center (4, -3) and radius 5?</Text>
+                <Text style={{ fontSize:18, fontWeight:'900', color:'#2E2E2E'}}>What is the name of the most widely used protocol for transferring files over the internet?</Text>
             </View>
             <View style={{ margin: 25, alignItems:'center', justifyContent:'center'}}>
                 <TouchableOpacity style={styles.choiceButton} onPress={() => { checkAnwer('A') }}>
-                    <Text style={styles.choiceText}>(x - 4)^2 + (y + 3)^2 = 25</Text>
+                    <Text style={styles.choiceText}>HTTP</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.choiceButton} onPress={() => { checkAnwer('B') }}>
-                    <Text style={styles.choiceText}>(x - 4)^2 + (y - 3)^2 = 25</Text>
+                    <Text style={styles.choiceText}>FTP</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.choiceButton} onPress={() => { checkAnwer('C') }}>
-                    <Text style={styles.choiceText}>(x + 4)^2 + (y - 3)^2 = 25</Text>
+                    <Text style={styles.choiceText}>SMTP</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.choiceButton} onPress={() => { checkAnwer('D') }}>
-                    <Text style={styles.choiceText}>(x + 4)^2 + (y + 3)^2 = 25</Text>
+                    <Text style={styles.choiceText}>DNS</Text>
                 </TouchableOpacity>
            </View>
         </View>
@@ -76,11 +78,11 @@ const Technology_Level22 = ({ navigation }) => {
                     </View>
 
                     <View style={{ margin: 25, justifyContent:'center', alignItems:'center' }}>
-                        <Text style={{ color:'#747474', textAlign:'center'}}>The equation of a circle with center (h, k) and radius r is (x - h)^2 + (y - k)^2 = r^2. We are given that the center is (4, -3) and the radius is 5, so we can substitute these values into the equation to get (x - 4)^2 + (y - (-3))^2 = 5^2. Simplifying, we get (x - 4)^2 + (y + 3)^2 = 25</Text>
+                        <Text style={{ color:'#747474', textAlign:'center'}}>FTP (File Transfer Protocol) is the most widely used protocol for transferring files over the internet. It allows users to upload and download files to and from a remote server, and is commonly used for website maintenance, software updates, and other file management tasks</Text>
                     </View>
 
                     <View style={{ position:'absolute', bottom:25, left:0, right:0, justifyContent:'center', alignItems:'center'}}>
-                        <Text style={{ color:'#FF8B13' }}>Tap anywhere to continue</Text>
+                        <Text style={{ color:'#363A66' }}>Tap anywhere to continue</Text>
                     </View>
                 </TouchableOpacity>
             </View> : null
@@ -94,16 +96,24 @@ const Technology_Level22 = ({ navigation }) => {
                     </View>
 
                     <View style={{ margin: 25, justifyContent:'center', alignItems:'center' }}>
-                        <Text style={{ color:'#747474', textAlign:'center'}}>We know the slope of the line is -2, so we can use the slope-intercept form of a linear equation, y = mx + b, where m is the slope and b is the y-intercept. We also know that the line passes through the point (3, 4), so we can substitute these values into the equation to find the value of b. 4 = -2(3) + b, so b = 4. Thus, the equation of the line is y = -2x + 4</Text>
+                        <Text style={{ color:'#747474', textAlign:'center'}}>FTP (File Transfer Protocol) is the most widely used protocol for transferring files over the internet. It allows users to upload and download files to and from a remote server, and is commonly used for website maintenance, software updates, and other file management tasks</Text>
                     </View>
 
                     <View style={{ position:'absolute', bottom:25, left:0, right:0, justifyContent:'center', alignItems:'center'}}>
-                        <Text style={{ color:'#FF8B13' }}>Tap anywhere to continue</Text>
+                        <Text style={{ color:'#363A66' }}>Tap anywhere to continue</Text>
                     </View>
                 </TouchableOpacity>
             </View> : null
         }
-      
+              <View style={{ position:'absolute', left:0, bottom:0, right:0, justifyContent:'center', alignItems:'center'}}>
+            <BannerAd
+                unitId={adUnitId}
+                size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+                requestOptions={{
+                    requestNonPersonalizedAdsOnly: true,
+                }}
+            />
+        </View>
     </View>
     )
 }

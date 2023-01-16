@@ -6,6 +6,7 @@ const Stack = createStackNavigator()
 
 //Screens
 import Main from '../screens/Main';
+import PrivacyPolicy from '../screens/PrivacyPolicy';
 import Category from '../screens/Category';
 
 import Math_Level1 from '../screens/category_math/Math_Level1';
@@ -89,39 +90,13 @@ import Technology_Level24 from '../screens/category_technology/Technology_Level2
 import Technology_Level25 from '../screens/category_technology/Technology_Level25';
 import FinishTechnology from '../screens/category_technology/FinishTechnology';
 
-import History_Level1 from '../screens/category_history/History_Level1';
-import History_Level2 from '../screens/category_history/History_Level2';
-import History_Level3 from '../screens/category_history/History_Level3';
-import History_Level5 from '../screens/category_history/History_Level5';
-import History_Level4 from '../screens/category_history/History_Level4';
-import History_Level6 from '../screens/category_history/History_Level6';
-import History_Level7 from '../screens/category_history/History_Level7';
-import History_Level8 from '../screens/category_history/History_Level8';
-import History_Level9 from '../screens/category_history/History_Level9';
-import History_Level10 from '../screens/category_history/History_Level10';
-import History_Level11 from '../screens/category_history/History_Level11';
-import History_Level12 from '../screens/category_history/History_Level12';
-import History_Level13 from '../screens/category_history/History_Level13';
-import History_Level14 from '../screens/category_history/History_Level14';
-import History_Level15 from '../screens/category_history/History_Level15';
-import History_Level16 from '../screens/category_history/History_Level16';
-import History_Level17 from '../screens/category_history/History_Level17';
-import History_Level18 from '../screens/category_history/History_Level18';
-import History_Level19 from '../screens/category_history/History_Level19';
-import History_Level20 from '../screens/category_history/History_Level20';
-import History_Level21 from '../screens/category_history/History_Level21';
-import History_Level22 from '../screens/category_history/History_Level22';
-import History_Level23 from '../screens/category_history/History_Level23';
-import History_Level24 from '../screens/category_history/History_Level24';
-import History_Level25 from '../screens/category_history/History_Level25';
-import FinishHistory from '../screens/category_history/FinishHistory';
-
 const NavigationRoute = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName='MainScreen'>
         <Stack.Screen name="MainScreen" component={Main} options={{ headerShown:false, gestureEnabled:false }}/>
         <Stack.Screen name="CategoryScreen" component={Category} options={{ headerShown:false, gestureEnabled:false }}/>
+        <Stack.Screen name="PrivacyPolicyScreen" component={PrivacyPolicy} options={{ headerShown:false, gestureEnabled:false }}/>
 
         {/* MATHEMATICS ROUTES */}
         <Stack.Screen name="Math_Level1Screen" component={Math_Level1} options={{ headerShown:false, gestureEnabled:false }}/>
@@ -206,34 +181,6 @@ const NavigationRoute = () => {
         <Stack.Screen name="Technology_Level24Screen" component={Technology_Level24} options={{ headerShown:false, gestureEnabled:false }}/>
         <Stack.Screen name="Technology_Level25Screen" component={Technology_Level25} options={{ headerShown:false, gestureEnabled:false }}/>
         <Stack.Screen name="FinishTechnology" component={FinishTechnology} options={{ headerShown:false, gestureEnabled:false }}/>
-
-        {/* // HISTORY ROUTES */}
-        <Stack.Screen name="History_Level1Screen" component={History_Level1} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="History_Level2Screen" component={History_Level2} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="History_Level3Screen" component={History_Level3} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="History_Level4Screen" component={History_Level4} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="History_Level5Screen" component={History_Level5} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="History_Level6Screen" component={History_Level6} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="History_Level7Screen" component={History_Level7} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="History_Level8Screen" component={History_Level8} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="History_Level9Screen" component={History_Level9} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="History_Level10Screen" component={History_Level10} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="History_Level11Screen" component={History_Level11} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="History_Level12Screen" component={History_Level12} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="History_Level13Screen" component={History_Level13} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="History_Level14Screen" component={History_Level14} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="History_Level15Screen" component={History_Level15} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="History_Level16Screen" component={History_Level16} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="History_Level17Screen" component={History_Level17} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="History_Level18Screen" component={History_Level18} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="History_Level19Screen" component={History_Level19} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="History_Level20Screen" component={History_Level20} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="History_Level21Screen" component={History_Level21} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="History_Level22Screen" component={History_Level22} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="History_Level23Screen" component={History_Level23} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="History_Level24Screen" component={History_Level24} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="History_Level25Screen" component={History_Level25} options={{ headerShown:false, gestureEnabled:false }}/>
-        <Stack.Screen name="FinishHistory" component={FinishHistory} options={{ headerShown:false, gestureEnabled:false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   )

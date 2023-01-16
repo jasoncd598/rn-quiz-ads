@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View, Image, BackHandler } from 'react-native';
 import { Appbar, Modal } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
 
+const adUnitId = __DEV__ ? TestIds.BANNER : 'ca-app-pub-7588961490853489/3026128751';
 const Science_Level3 = ({ navigation }) => {
     const [visible, setVisible] = useState(false);
     const [correct, setCorrect] = useState(true);
@@ -42,27 +44,27 @@ const Science_Level3 = ({ navigation }) => {
 
     return (
     <View style={styles.container}>
-        <Appbar.Header style={{ backgroundColor:'#FF8B13'}}>
+        <Appbar.Header style={{ backgroundColor:'#363A66'}}>
             <Appbar.BackAction onPress={() => { navigation.navigate('CategoryScreen') }} color='#fff'/>
             <Appbar.Content title="Science - Level 3" subtitle={'Subtitle'} color='#fff'/>
         </Appbar.Header>
 
         <View style={styles.subContainer}>
             <View style={{ margin: 25, alignItems:'center', justifyContent:'center'}}>
-                <Text style={{ fontSize:18, fontWeight:'900', color:'#2E2E2E'}}>What is the value of x if 2x + 3 = 11?</Text>
+                <Text style={{ fontSize:18, fontWeight:'900', color:'#2E2E2E'}}>What is the role of DNA in the cell?</Text>
             </View>
             <View style={{ margin: 25, alignItems:'center', justifyContent:'center'}}>
                 <TouchableOpacity style={styles.choiceButton} onPress={() => { checkAnwer('A') }}>
-                    <Text style={styles.choiceText}>2</Text>
+                    <Text style={styles.choiceText}>Transporting oxygen</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.choiceButton} onPress={() => { checkAnwer('B') }}>
-                    <Text style={styles.choiceText}>4</Text>
+                    <Text style={styles.choiceText}>Storing energy</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.choiceButton} onPress={() => { checkAnwer('C') }}>
-                    <Text style={styles.choiceText}>6</Text>
+                    <Text style={styles.choiceText}>Carrying genetic information</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.choiceButton} onPress={() => { checkAnwer('D') }}>
-                    <Text style={styles.choiceText}>8</Text>
+                    <Text style={styles.choiceText}>Regulating metabolism</Text>
                 </TouchableOpacity>
            </View>
         </View>
@@ -76,11 +78,11 @@ const Science_Level3 = ({ navigation }) => {
                     </View>
 
                     <View style={{ margin: 25, justifyContent:'center', alignItems:'center' }}>
-                        <Text style={{ color:'#747474', textAlign:'center'}}>To solve for x, we need to isolate x on one side of the equation. We can start by subtracting 3 from both sides to get 2x = 8. Then, we can divide both sides by 2 to get x = 4. Therefore, the value of x is 6</Text>
+                        <Text style={{ color:'#747474', textAlign:'center'}}>DNA, short for deoxyribonucleic acid, is a molecule that carries genetic information in all living organisms. DNA is located in the nucleus of a cell and contains the instructions for the development and function of all living things</Text>
                     </View>
 
                     <View style={{ position:'absolute', bottom:25, left:0, right:0, justifyContent:'center', alignItems:'center'}}>
-                        <Text style={{ color:'#FF8B13' }}>Tap anywhere to continue</Text>
+                        <Text style={{ color:'#363A66' }}>Tap anywhere to continue</Text>
                     </View>
                 </TouchableOpacity>
             </View> : null
@@ -94,16 +96,24 @@ const Science_Level3 = ({ navigation }) => {
                     </View>
 
                     <View style={{ margin: 25, justifyContent:'center', alignItems:'center' }}>
-                        <Text style={{ color:'#747474', textAlign:'center'}}>To solve for x, we need to isolate x on one side of the equation. We can start by subtracting 3 from both sides to get 2x = 8. Then, we can divide both sides by 2 to get x = 4. Therefore, the value of x is 6</Text>
+                        <Text style={{ color:'#747474', textAlign:'center'}}>DNA, short for deoxyribonucleic acid, is a molecule that carries genetic information in all living organisms. DNA is located in the nucleus of a cell and contains the instructions for the development and function of all living things</Text>
                     </View>
 
                     <View style={{ position:'absolute', bottom:25, left:0, right:0, justifyContent:'center', alignItems:'center'}}>
-                        <Text style={{ color:'#FF8B13' }}>Tap anywhere to continue</Text>
+                        <Text style={{ color:'#363A66' }}>Tap anywhere to continue</Text>
                     </View>
                 </TouchableOpacity>
             </View> : null
         }
-      
+              <View style={{ position:'absolute', left:0, bottom:0, right:0, justifyContent:'center', alignItems:'center'}}>
+            <BannerAd
+                unitId={adUnitId}
+                size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+                requestOptions={{
+                    requestNonPersonalizedAdsOnly: true,
+                }}
+            />
+        </View>
     </View>
     )
 }

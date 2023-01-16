@@ -20,15 +20,15 @@ const FinishTechnology = ({ navigation }) => {
       <View style={style.innerContainer}>
         <View style={{ justifyContent:'center', alignItems:'center'}}>
           <Image style={{ width:150, height:150 }} source={{ uri: 'https://cdn-icons-png.flaticon.com/512/5278/5278593.png' }}/>
-          <Text style={{ fontSize:18, marginTop:25, textAlign:'center', color:'#2E2E2E'}}>Congratulations! You've Completed the Quiz Mania</Text>
+          <Text style={{ fontSize:18, marginTop:25, textAlign:'center', color:'#2E2E2E'}}>Congratulations! You've Completed the Technology Twist Mania</Text>
         </View>
         <View style={{ marginTop:25 }}>
-          <TouchableOpacity style={style.buttonStyle} onPress={() => { navigation.navigate('Technology_Level1Screen')}}>
-            <Text style={{ color:'#fff' }}>Reset Quiz</Text>
+          <TouchableOpacity style={style.buttonStyle} onPress={() => { navigation.replace('Technology_Level1Screen')}}>
+            <Text style={{ color:'#fff' }}>Play again</Text>
           </TouchableOpacity>
         </View>
         <View style={{ marginTop:10 }}>
-          <TouchableOpacity style={style.buttonStyle} onPress={() => { navigation.navigate('CategoryScreen')}}>
+          <TouchableOpacity style={style.buttonStyle} onPress={() => { navigation.replace('CategoryScreen')}}>
             <Text style={{ color:'#fff' }}>Home</Text>
           </TouchableOpacity>
         </View>
